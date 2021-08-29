@@ -1,0 +1,66 @@
+unit TesteCep;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ACBrBase, ACBrSocket, ACBrCEP,
+  Vcl.StdCtrls;
+
+type
+  TfrmCep = class(TForm)
+    edtConsulta: TEdit;
+    Label1: TLabel;
+    edtLogradouro: TEdit;
+    Label2: TLabel;
+    Label3: TLabel;
+    edtTipoLogradouro: TEdit;
+    edtBairro: TEdit;
+    Label4: TLabel;
+    edtCEP: TEdit;
+    Label5: TLabel;
+    edtComplemento: TEdit;
+    Label6: TLabel;
+    edtCidade: TEdit;
+    Label7: TLabel;
+    edtEstado: TEdit;
+    Label8: TLabel;
+    btnPesquisarCep: TButton;
+    ACBrCEP: TACBrCEP;
+    procedure FormCreate(Sender: TObject);
+    procedure btnPesquisarCepClick(Sender: TObject);
+    procedure ACBrCEPBuscaEfetuada(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmCep: TfrmCep;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmCep.ACBrCEPBuscaEfetuada(Sender: TObject);
+begin
+  edtCEP.Text := ACBrCEP.Enderecos[i].CEP;
+  edtLogradouro.Text := ACBrCEP.Enderecos[i].Logradouro;
+  edtComplemento.Text := ACBrCEP.Enderecos[i].Complemento;
+  edtCidade.Text := ACBrCEP.Enderecos[i].Municipio;
+  edtEstado.Text := ACBrCEP.Enderecos[i].UF;
+  edtTipoLogradouro := ACBrCEP.Enderecos[i].Tipo_Logradouro;
+end;
+
+procedure TfrmCep.btnPesquisarCepClick(Sender: TObject);
+begin
+  ACBrCEP.BuscarPorCEP(edtConsulta.Text);
+end;
+
+procedure TfrmCep.FormCreate(Sender: TObject);
+begin
+  ACBrCEP.URL := 'https://buscarcep.com.br/site.php';
+end;
+
+end.
