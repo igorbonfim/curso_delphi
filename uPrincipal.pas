@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, uDTMConexao, uCadCategoria, Enter;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, uDTMConexao, Enter;
 
 type
   TfrmPrincipal = class(TForm)
@@ -28,6 +28,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure CATEGORIA1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure CLIENTE1Click(Sender: TObject);
   private
     { Private declarations }
     TeclaEnter : TMREnter;
@@ -42,11 +43,20 @@ implementation
 
 {$R *.dfm}
 
+uses uCadCategoria, uCadCliente;
+
 procedure TfrmPrincipal.CATEGORIA1Click(Sender: TObject);
 begin
     frmCadCategoria := TfrmCadCategoria.Create(Self);
     frmCadCategoria.ShowModal;
     frmCadCategoria.Release; // tira o objeto da memória
+end;
+
+procedure TfrmPrincipal.CLIENTE1Click(Sender: TObject);
+begin
+  frmCadCliente := TfrmCadCliente.Create(Self);
+  frmCadCliente.ShowModal;
+  frmCadCliente.Release;
 end;
 
 procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);

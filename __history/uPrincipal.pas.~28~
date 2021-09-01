@@ -27,6 +27,8 @@ type
     procedure mnuFecharClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure CATEGORIA1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure CLIENTE1Click(Sender: TObject);
   private
     { Private declarations }
     TeclaEnter : TMREnter;
@@ -41,7 +43,7 @@ implementation
 
 {$R *.dfm}
 
-uses uCadCategoria, Enter;
+uses uCadCategoria, uCadCliente;
 
 procedure TfrmPrincipal.CATEGORIA1Click(Sender: TObject);
 begin
@@ -50,23 +52,24 @@ begin
     frmCadCategoria.Release; // tira o objeto da memória
 end;
 
+procedure TfrmPrincipal.CLIENTE1Click(Sender: TObject);
+begin
+  frmCadCliente.Tfr.Create(Self);
+  frmCadCliente.ShowModal;
+  frmCadCliente.Release;
+end;
+
+procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+    FreeAndNil(TeclaEnter);
+    FreeAndNil(dtmPrincipal);
+end;
+
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
-    {
-    dtmPrincipal := TdtmPrincipal.Create(Self);
-    dtmPrincipal.ConexaoDB.SQLHourGlass := true;
-    dtmPrincipal.ConexaoDB.Protocol := 'mssql';
-    dtmPrincipal.ConexaoDB.LibraryLocation := 'C:\ProjetoDelphi\ntwdblib.dll';
-    dtmPrincipal.ConexaoDB.HostName := '.';
-    dtmPrincipal.ConexaoDB.Port := 1433;
-    dtmPrincipal.ConexaoDB.User := 'sa';
-    dtmPrincipal.ConexaoDB.Password := 'epilef';
-    dtmPrincipal.ConexaoDB.Database := 'Vendas';
-    dtmPrincipal.ConexaoDB.Connected := true;
-    }
     dtmPrincipal := TdtmPrincipal.Create(Self);
     with dtmPrincipal.ConexaoDB do begin
-        SQLHourGlass := true;
+        SQLHourGlass := False;
         Protocol := 'mssql';
         LibraryLocation := 'C:\ProjetoDelphi\ntwdblib.dll';
         HostName := '.';
@@ -78,6 +81,8 @@ begin
     end;
 
     TeclaEnter := TMREnter.Create(Self);
+    TeclaEnter.FocusEnabled := true;
+    TeclaEnter.FocusColor := clInfoBk;
 end;
 
 procedure TfrmPrincipal.mnuFecharClick(Sender: TObject);

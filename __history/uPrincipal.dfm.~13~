@@ -10,13 +10,16 @@ object frmPrincipal: TfrmPrincipal
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  Menu = MainMenu1
+  Menu = mainPrincipal
   OldCreateOrder = False
+  WindowState = wsMaximized
+  OnClose = FormClose
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object MainMenu1: TMainMenu
-    Left = 80
-    Top = 104
+  object mainPrincipal: TMainMenu
+    Left = 24
+    Top = 16
     object CADA1: TMenuItem
       Caption = 'CADASTRO'
       object CLIENTE1: TMenuItem
@@ -27,6 +30,7 @@ object frmPrincipal: TfrmPrincipal
       end
       object CATEGORIA1: TMenuItem
         Caption = 'CATEGORIA'
+        OnClick = CATEGORIA1Click
       end
       object PRODUTO1: TMenuItem
         Caption = 'PRODUTO'
@@ -34,8 +38,9 @@ object frmPrincipal: TfrmPrincipal
       object N2: TMenuItem
         Caption = '-'
       end
-      object FECHAR1: TMenuItem
+      object mnuFechar: TMenuItem
         Caption = 'FECHAR'
+        OnClick = mnuFecharClick
       end
     end
     object MOVIMENTAO1: TMenuItem

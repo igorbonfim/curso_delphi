@@ -20,9 +20,5 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TfrmConsultaCNPJ, frmConsultaCNPJ);
-  Application.CreateForm(TfrmCep, frmCep);
-  Application.CreateForm(TfrmTelaHeranca, frmTelaHeranca);
-  Application.CreateForm(TfrmCadCliente, frmCadCliente);
   Application.Run;
 end.

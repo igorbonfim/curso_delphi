@@ -32,9 +32,9 @@
     <Transaction>2021/08/21 23:00:21.000.307,=C:\ProjetoDelphi\Unit1.pas</Transaction>
     <Transaction>2021/08/21 23:00:43.000.139,C:\ProjetoDelphi\Unit1.dfm=C:\ProjetoDelphi\Cadastro\uCadCliente.dfm</Transaction>
     <Transaction>2021/08/21 23:00:43.000.139,C:\ProjetoDelphi\Unit1.pas=C:\ProjetoDelphi\Cadastro\uCadCliente.pas</Transaction>
-    <Transaction>2021/08/28 21:20:04.853,=C:\ProjetoDelphi\Unit1.pas</Transaction>
-    <Transaction>2021/08/28 21:20:34.662,C:\ProjetoDelphi\cCadCliente.pas=C:\ProjetoDelphi\Unit1.pas</Transaction>
-    <Transaction>2021/08/28 22:53:10.354,C:\ProjetoDelphi\Classes\cCadCliente.pas=C:\ProjetoDelphi\cCadCliente.pas</Transaction>
+    <Transaction>2021/08/28 21:20:04.000.853,=C:\ProjetoDelphi\Unit1.pas</Transaction>
+    <Transaction>2021/08/28 21:20:34.000.662,C:\ProjetoDelphi\cCadCliente.pas=C:\ProjetoDelphi\Unit1.pas</Transaction>
+    <Transaction>2021/08/28 22:53:10.000.354,C:\ProjetoDelphi\Classes\cCadCliente.pas=C:\ProjetoDelphi\cCadCliente.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="Cadastro"/>

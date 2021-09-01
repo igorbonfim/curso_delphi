@@ -162,7 +162,7 @@ begin
                                        ':bairro, '+
                                        ':estado, '+
                                        ':cep, '+
-                                       ':telefone: '+
+                                       ':telefone, '+
                                        ':email, '+
                                        ':dataNascimento)' );
 
