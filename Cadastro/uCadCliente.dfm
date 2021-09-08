@@ -6,6 +6,7 @@ inherited frmCadCliente: TfrmCadCliente
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
     Width = 792
+    ActivePage = tabManutencao
     ExplicitWidth = 792
     inherited tabListagem: TTabSheet
       ExplicitWidth = 784
@@ -34,7 +35,6 @@ inherited frmCadCliente: TfrmCadCliente
           item
             Expanded = False
             FieldName = 'endereco'
-            Width = 64
             Visible = True
           end>
       end

@@ -109,7 +109,7 @@ begin
                 '    ,endereco        = :endereco '+
                 '    ,cidade          = :cidade '+
                 '    ,bairro          = :bairro '+
-                '    ,estado          = :bairro '+
+                '    ,estado          = :estado '+
                 '    ,cep             = :cep '+
                 '    ,telefone        = :telefone '+
                 '    ,email           = :email '+
@@ -206,9 +206,10 @@ begin
                 '       cep, '+
                 '       telefone, '+
                 '       email, '+
-                '       dataNascimento, '+
+                '       dataNascimento '+
                 'FROM  clientes '+
                 'WHERE clienteId = :clienteId');
+    Qry.ParamByName('clienteId').AsInteger := id;
     Try
       Qry.Open;
 

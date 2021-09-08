@@ -80,6 +80,7 @@ begin
   oCliente.bairro         := edtBairro.Text;
   oCliente.cidade         := edtCidade.Text;
   oCliente.telefone       := edtTelefone.Text;
+  oCliente.email          := edtEmail.Text;
   oCliente.dataNascimento := edtDataNascimento.Date;
 
   if (EstadoDoCadastro = ecInserir) then
@@ -110,7 +111,6 @@ begin
   end;
 
   inherited;
-
 end;
 
 procedure TfrmCadCliente.btnNovoClick(Sender: TObject);
