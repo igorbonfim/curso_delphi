@@ -12,7 +12,8 @@ uses
   uTelaHeranca in 'Heranca\uTelaHeranca.pas' {frmTelaHeranca},
   cCadCategoria in 'Classes\cCadCategoria.pas',
   uCadCliente in 'Cadastro\uCadCliente.pas' {frmCadCliente},
-  cCadCliente in 'Classes\cCadCliente.pas';
+  cCadCliente in 'Classes\cCadCliente.pas',
+  uCadProduto in 'Cadastro\uCadProduto.pas' {frmCadProduto};
 
 {$R *.res}
 
@@ -20,5 +21,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TfrmCadProduto, frmCadProduto);
   Application.Run;
 end.

@@ -4,12 +4,16 @@ uses
   Vcl.Forms,
   uPrincipal in 'uPrincipal.pas' {frmPrincipal},
   uDTMConexao in 'DataModule\uDTMConexao.pas' {dtmPrincipal: TDataModule},
-  uTelaHeranca in 'uTelaHeranca.pas' {frmTelaHeranca},
   uCadCategoria in 'Cadastro\uCadCategoria.pas' {frmCadCategoria},
   Enter in 'terceiros\Enter.pas',
   uEnum in 'Heranca\uEnum.pas',
   TesteCep in 'TesteCep.pas' {frmCep},
-  TesteConsultaCNPJ in 'TesteConsultaCNPJ.pas' {frmConsultaCNPJ};
+  TesteConsultaCNPJ in 'TesteConsultaCNPJ.pas' {frmConsultaCNPJ},
+  uTelaHeranca in 'Heranca\uTelaHeranca.pas' {frmTelaHeranca},
+  cCadCategoria in 'Classes\cCadCategoria.pas',
+  uCadCliente in 'Cadastro\uCadCliente.pas' {frmCadCliente},
+  cCadCliente in 'Classes\cCadCliente.pas',
+  uCadProduto in 'Cadastro\uCadProduto.pas' {frmTelaHeranca1};
 
 {$R *.res}
 
@@ -17,7 +21,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TfrmConsultaCNPJ, frmConsultaCNPJ);
-  Application.CreateForm(TfrmCep, frmCep);
+  Application.CreateForm(TfrmTelaHeranca1, frmTelaHeranca1);
   Application.Run;
 end.
