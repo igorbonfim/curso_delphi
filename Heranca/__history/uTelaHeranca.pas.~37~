@@ -6,7 +6,9 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.ComCtrls, Data.DB,
   Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask,
-  ZAbstractRODataset, ZAbstractDataset, ZDataset, uEnum, uDTMConexao;
+  ZAbstractRODataset, ZAbstractDataset, ZDataset, uEnum, uDTMConexao,
+  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer,
+  cxEdit, cxTextEdit, RxToolEdit, RxCurrEdit;
 
 type
   TfrmTelaHeranca = class(TForm)
@@ -28,6 +30,7 @@ type
     QryListagem: TZQuery;
     dtsListagem: TDataSource;
     lblIndice: TLabel;
+    CurrencyEdit1: TCurrencyEdit;
     procedure FormCreate(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
@@ -42,7 +45,7 @@ type
     procedure grdListagemDblClick(Sender: TObject);
   private
     { Private declarations }
-    EstadoDoCadastro : TEstadoDoCadastro;
+
 
     procedure ControlarBotoes(btnNovo, btnAlterar, btnCancelar,
               btnGravar, btnApagar : TBitBtn; Navegador : TDBNavigator;
@@ -56,7 +59,8 @@ type
   public
     { Public declarations }
     IndiceAtual: String;
-    function Excluir: Boolean; virtual;
+    EstadoDoCadastro : TEstadoDoCadastro;
+    function Apagar: Boolean; virtual;
     function Gravar(EstadoDoCadastro: TEstadoDoCadastro): Boolean; virtual;
   end;
 
@@ -158,16 +162,22 @@ begin
   for i := 0 to ComponentCount - 1 do
   begin
     if (Components[i] is TLabeledEdit) then
-    begin
-       TLabeledEdit(Components[i]).Text := EmptyStr;
-    end;
+      TLabeledEdit(Components[i]).Text := EmptyStr
+    else if (Components[i] is TEdit) then
+      TEdit(Components[i]).Text := ''
+    else if (Components[i] is TMemo) then
+      TMemo(Components[i]).Text := ''
+    else if (Components[i] is TDBLookupComboBox) then
+      TDBLookupComboBox(Components[i]).KeyValue := Null
+    else if (Components[i] is TEdit) then
+      TEdit(Components[i]).Text := '';
   end;
 end;
 
 {$endregion}
 
 {$Region 'MÉTODOS VIRTUAIS}
-function TfrmTelaHeranca.Excluir: Boolean;
+function TfrmTelaHeranca.Apagar: Boolean;
 begin
     ShowMessage('DELETADO');
     Result := True;
@@ -188,6 +198,7 @@ begin
     ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar,
                     btnApagar, btnNavigator, pgcPrincipal, false);
     EstadoDoCadastro := ecInserir;
+    LimparEdits;
 end;
 
 procedure TfrmTelaHeranca.btnAlterarClick(Sender: TObject);
@@ -200,11 +211,13 @@ end;
 procedure TfrmTelaHeranca.btnApagarClick(Sender: TObject);
 begin
   Try
-    if (Excluir) then
+    if (Apagar) then
     begin
       ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar,
                       btnApagar, btnNavigator, pgcPrincipal, true);
       ControlarIndiceTab(pgcPrincipal, 0);
+      LimparEdits;
+      QryListagem.Refresh;
     end
     else begin
       MessageDlg('Erro na exclusão', mtError, [mbok], 0);
@@ -220,6 +233,7 @@ begin
                    btnApagar, btnNavigator, pgcPrincipal, true);
    ControlarIndiceTab(pgcPrincipal, 0);
    EstadoDoCadastro := ecNenhum;
+   LimparEdits;
 end;
 
 procedure TfrmTelaHeranca.btnFecharClick(Sender: TObject);
@@ -239,6 +253,8 @@ begin
                         btnApagar, btnNavigator, pgcPrincipal, true);
         ControlarIndiceTab(pgcPrincipal, 0);
         EstadoDoCadastro := ecNenhum;
+        LimparEdits;
+        QryListagem.Refresh;
       end
       else begin
         MessageDlg('Erro na gravação', mtError, [mbok], 0);

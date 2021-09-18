@@ -10,7 +10,10 @@ uses
   TesteCep in 'TesteCep.pas' {frmCep},
   TesteConsultaCNPJ in 'TesteConsultaCNPJ.pas' {frmConsultaCNPJ},
   uTelaHeranca in 'Heranca\uTelaHeranca.pas' {frmTelaHeranca},
-  cCadCategoria in 'cCadCategoria.pas';
+  cCadCategoria in 'Classes\cCadCategoria.pas',
+  uCadCliente in 'Cadastro\uCadCliente.pas' {frmCadCliente},
+  cCadCliente in 'Classes\cCadCliente.pas',
+  uCadProduto in 'Cadastro\uCadProduto.pas' {frmCadProduto};
 
 {$R *.res}
 
@@ -18,8 +21,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TfrmConsultaCNPJ, frmConsultaCNPJ);
-  Application.CreateForm(TfrmCep, frmCep);
-  Application.CreateForm(TfrmTelaHeranca, frmTelaHeranca);
+  Application.CreateForm(TfrmCadProduto, frmCadProduto);
   Application.Run;
 end.

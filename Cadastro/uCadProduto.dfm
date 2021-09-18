@@ -36,10 +36,6 @@
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 755
-      ExplicitHeight = 415
       object Label1: TLabel
         Left = 11
         Top = 108
@@ -60,6 +56,13 @@
         Width = 56
         Height = 13
         Caption = 'Quantidade'
+      end
+      object Label4: TLabel
+        Left = 401
+        Top = 62
+        Width = 47
+        Height = 13
+        Caption = 'Categoria'
       end
       object edtProdutoId: TLabeledEdit
         Tag = 1
@@ -92,18 +95,18 @@
         Width = 734
         Height = 89
         MaxLength = 255
-        TabOrder = 2
+        TabOrder = 3
       end
       object edtValor: TcxCurrencyEdit
         Left = 11
         Top = 248
-        TabOrder = 3
+        TabOrder = 4
         Width = 121
       end
       object edtQuantidade: TcxCurrencyEdit
         Left = 162
         Top = 248
-        TabOrder = 4
+        TabOrder = 5
         Width = 121
       end
       object lkpCategoria: TDBLookupComboBox
@@ -114,7 +117,7 @@
         KeyField = 'categoriaId'
         ListField = 'descricao'
         ListSource = dtsCategoria
-        TabOrder = 5
+        TabOrder = 2
       end
     end
   end
