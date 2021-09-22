@@ -75,13 +75,14 @@ begin
     Qry.Connection := ConexaoDB;
     Qry.SQL.Clear;
     Qry.SQL.Add('DELETE FROM produtos ' +
-                ' WHERE produtoId = :produtoId ');
+                'WHERE produtoId = :produtoId ');
     Qry.ParamByName('produtoId').AsInteger := F_produtoId;
   Try
     Qry.ExecSQL;
-  Finally
+  Except
     Result := false;
   End;
+
  finally
     if Assigned(Qry) then
         FreeAndNil(Qry);
@@ -113,7 +114,7 @@ begin
 
     Try
       Qry.ExecSQL;
-    Finally
+    Except
       Result := false;
     End;
 
@@ -150,9 +151,10 @@ begin
 
     Try
       Qry.ExecSQL;
-    Finally
+    Except
       Result := false;
     End;
+
   finally
     if Assigned(Qry) then
         FreeAndNil(Qry);
@@ -164,7 +166,7 @@ var
   Qry : TZQuery;
 begin
   try
-     Result := true;
+    Result := true;
     Qry := TZQuery.Create(nil);
     Qry.Connection := ConexaoDB;
     Qry.SQL.Clear;
@@ -173,23 +175,23 @@ begin
                 '       descricao, '+
                 '       valor, '+
                 '       quantidade, '+
-                '       categoriaId, '+
+                '       categoriaId '+
                 'FROM   produtos '+
                 'WHERE  produtoId = :produtoId');
     Qry.ParamByName('produtoId').AsInteger := id;
-
     Try
       Qry.Open;
 
       Self.F_produtoId   := Qry.FieldByName('produtoId').AsInteger;
       Self.F_nome        := Qry.FieldByName('nome').AsString;
-      Self.F_descricao   := Qry.FieldByName('produtoId').AsString;
-      Self.F_valor       := Qry.FieldByName('produtoId').AsFloat;
-      Self.F_quantidade  := Qry.FieldByName('produtoId').AsFloat;
+      Self.F_descricao   := Qry.FieldByName('descricao').AsString;
+      Self.F_valor       := Qry.FieldByName('valor').AsFloat;
+      Self.F_quantidade  := Qry.FieldByName('quantidade').AsFloat;
       Self.F_categoriaId := Qry.FieldByName('categoriaId').AsInteger;
-    Finally
+    Except
       Result := false;
     End;
+
   finally
     if Assigned(Qry) then
         FreeAndNil(Qry);

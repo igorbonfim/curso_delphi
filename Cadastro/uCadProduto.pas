@@ -21,7 +21,7 @@ type
     QryListagemDescricaoCategoria: TWideStringField;
     edtProdutoId: TLabeledEdit;
     edtNome: TLabeledEdit;
-    edtDescrição: TMemo;
+    edtDescricao: TMemo;
     Label1: TLabel;
     edtValor: TcxCurrencyEdit;
     edtQuantidade: TcxCurrencyEdit;
@@ -71,14 +71,14 @@ begin
     oProduto.codigo := 0;
 
   oProduto.nome         := edtNome.Text;
-  oProduto.descricao    := edtDescrição.Text;
+  oProduto.descricao    := edtDescricao.Text;
   oProduto.categoriaId  := lkpCategoria.KeyValue;
   oProduto.valor        := edtValor.Value;
   oProduto.quantidade   := edtQuantidade.Value;
 
   if (EstadoDoCadastro = ecInserir) then
      Result := oProduto.Inserir
-  else
+  else if (EstadoDoCadastro = ecAlterar) then
      Result := oProduto.Atualizar;
 end;
 {$endRegion}
@@ -89,7 +89,7 @@ begin
   begin
      edtProdutoId.Text      := IntToStr(oProduto.codigo);
      edtNome.Text           := oProduto.nome;
-     edtDescrição.Text      := oProduto.descricao;
+     edtDescricao.Text      := oProduto.descricao;
      lkpCategoria.KeyValue  := oProduto.categoriaId;
      edtValor.Value         := oProduto.valor;
      edtQuantidade.Value    := oProduto.quantidade;

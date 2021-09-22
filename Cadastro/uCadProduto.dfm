@@ -1,4 +1,4 @@
-﻿inherited frmCadProduto: TfrmCadProduto
+inherited frmCadProduto: TfrmCadProduto
   Caption = 'Cadastro de Produto'
   PixelsPerInch = 96
   TextHeight = 13
@@ -89,7 +89,7 @@
         MaxLength = 60
         TabOrder = 1
       end
-      object edtDescrição: TMemo
+      object edtDescricao: TMemo
         Left = 11
         Top = 128
         Width = 734
