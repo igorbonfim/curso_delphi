@@ -1,0 +1,14 @@
+object dtmVenda: TdtmVenda
+  OldCreateOrder = False
+  Height = 489
+  Width = 838
+  object QryCliente: TZQuery
+    SQL.Strings = (
+      'SELECT clienteId, '
+      '             nome'
+      'FROM   clientes')
+    Params = <>
+    Left = 56
+    Top = 16
+  end
+end
