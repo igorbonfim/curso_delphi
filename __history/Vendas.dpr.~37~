@@ -10,16 +10,19 @@ uses
   TesteCep in 'TesteCep.pas' {frmCep},
   TesteConsultaCNPJ in 'TesteConsultaCNPJ.pas' {frmConsultaCNPJ},
   uTelaHeranca in 'Heranca\uTelaHeranca.pas' {frmTelaHeranca},
-  cCadCategoria in 'Classes\cCadCategoria.pas';
+  cCadCategoria in 'Classes\cCadCategoria.pas',
+  uCadCliente in 'Cadastro\uCadCliente.pas' {frmCadCliente},
+  cCadCliente in 'Classes\cCadCliente.pas',
+  uCadProduto in 'Cadastro\uCadProduto.pas' {frmCadProduto},
+  cCadProduto in 'Classes\cCadProduto.pas',
+  uFrmAtualizaDB in 'DataModule\uFrmAtualizaDB.pas' {frmAtualizaDB};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TfrmConsultaCNPJ, frmConsultaCNPJ);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TfrmCep, frmCep);
-  Application.CreateForm(TfrmTelaHeranca, frmTelaHeranca);
+  Application.CreateForm(TfrmAtualizaDB, frmAtualizaDB);
   Application.Run;
 end.
