@@ -7,6 +7,7 @@ object dtmPrincipal: TdtmPrincipal
     Catalog = ''
     Properties.Strings = (
       'controls_cp=CP_UTF16')
+    Connected = True
     SQLHourGlass = True
     HostName = '.'
     Port = 1433
@@ -14,7 +15,7 @@ object dtmPrincipal: TdtmPrincipal
     User = 'sa'
     Password = 'epilef'
     Protocol = 'mssql'
-    LibraryLocation = 'C:\ProjetoDelphi\ntwdblib.dll'
+    LibraryLocation = 'C:\Projetos\ProjetoDelphi\ntwdblib.dll'
     Left = 48
     Top = 32
   end

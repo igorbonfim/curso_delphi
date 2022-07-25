@@ -7,8 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uTelaHeranca, Data.DB,
   ZAbstractRODataset, ZAbstractDataset, ZDataset, Vcl.DBCtrls, Vcl.Grids,
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ExtCtrls, Vcl.ComCtrls,
-  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer,
-  cxEdit, cxTextEdit, cxCurrencyEdit, cCadProduto, uEnum, uDTMConexao;
+  cCadProduto, uEnum, uDTMConexao, RxToolEdit, RxCurrEdit;
 
 type
   TfrmCadProduto = class(TfrmTelaHeranca)
@@ -23,8 +22,6 @@ type
     edtNome: TLabeledEdit;
     edtDescricao: TMemo;
     Label1: TLabel;
-    edtValor: TcxCurrencyEdit;
-    edtQuantidade: TcxCurrencyEdit;
     Label2: TLabel;
     Label3: TLabel;
     lkpCategoria: TDBLookupComboBox;
@@ -33,11 +30,15 @@ type
     QryCategoriacategoriaId: TIntegerField;
     QryCategoriadescricao: TWideStringField;
     Label4: TLabel;
+    edtValor: TCurrencyEdit;
+    edtQuantidade: TCurrencyEdit;
     procedure btnAlterarClick(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure tabManutencaoContextPopup(Sender: TObject; MousePos: TPoint;
+      var Handled: Boolean);
   private
     { Private declarations }
     oProduto : TProduto;
@@ -81,6 +82,13 @@ begin
   else if (EstadoDoCadastro = ecAlterar) then
      Result := oProduto.Atualizar;
 end;
+procedure TfrmCadProduto.tabManutencaoContextPopup(Sender: TObject;
+  MousePos: TPoint; var Handled: Boolean);
+begin
+  inherited;
+
+end;
+
 {$endRegion}
 
 procedure TfrmCadProduto.btnAlterarClick(Sender: TObject);

@@ -36,6 +36,7 @@ inherited frmCadProduto: TfrmCadProduto
       end
     end
     inherited tabManutencao: TTabSheet
+      OnContextPopup = tabManutencaoContextPopup
       object Label1: TLabel
         Left = 11
         Top = 108
@@ -97,18 +98,6 @@ inherited frmCadProduto: TfrmCadProduto
         MaxLength = 255
         TabOrder = 3
       end
-      object edtValor: TcxCurrencyEdit
-        Left = 11
-        Top = 248
-        TabOrder = 4
-        Width = 121
-      end
-      object edtQuantidade: TcxCurrencyEdit
-        Left = 162
-        Top = 248
-        TabOrder = 5
-        Width = 121
-      end
       object lkpCategoria: TDBLookupComboBox
         Left = 399
         Top = 78
@@ -118,6 +107,21 @@ inherited frmCadProduto: TfrmCadProduto
         ListField = 'descricao'
         ListSource = dtsCategoria
         TabOrder = 2
+      end
+      object edtValor: TCurrencyEdit
+        Left = 11
+        Top = 248
+        Width = 121
+        Height = 21
+        TabOrder = 4
+      end
+      object edtQuantidade: TCurrencyEdit
+        Left = 162
+        Top = 248
+        Width = 121
+        Height = 21
+        DisplayFormat = ' 0.00'
+        TabOrder = 5
       end
     end
   end

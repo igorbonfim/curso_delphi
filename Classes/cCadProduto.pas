@@ -59,7 +59,6 @@ end;
 function TProduto.Apagar : Boolean;
 var
   Qry : TZQuery;
-  MyClass: TComponent;
 begin
  if MessageDlg('Apagar o Registro: ' +#13+#13+
                'Código: ' +IntToStr(F_produtoId)+#13+

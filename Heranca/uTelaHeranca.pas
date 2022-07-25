@@ -7,8 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.ComCtrls, Data.DB,
   Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask,
   ZAbstractRODataset, ZAbstractDataset, ZDataset, uEnum, uDTMConexao,
-  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer,
-  cxEdit, cxTextEdit, RxToolEdit, RxCurrEdit;
+   RxToolEdit, RxCurrEdit;
 
 type
   TfrmTelaHeranca = class(TForm)
@@ -42,6 +41,8 @@ type
     procedure grdListagemTitleClick(Column: TColumn);
     procedure mskPesquisarChange(Sender: TObject);
     procedure grdListagemDblClick(Sender: TObject);
+    procedure grdListagemKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
 
@@ -61,6 +62,7 @@ type
     EstadoDoCadastro : TEstadoDoCadastro;
     function Apagar: Boolean; virtual;
     function Gravar(EstadoDoCadastro: TEstadoDoCadastro): Boolean; virtual;
+    procedure BloqueiaCTRL_DEL_DBGrid(var Key: Word; Shift: TShiftState);
   end;
 
 var
@@ -302,6 +304,12 @@ begin
   btnAlterar.Click;
 end;
 
+procedure TfrmTelaHeranca.grdListagemKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  BloqueiaCTRL_DEL_DBGrid(Key, Shift);
+end;
+
 procedure TfrmTelaHeranca.grdListagemTitleClick(Column: TColumn);
 begin
     IndiceAtual := Column.FieldName;
@@ -312,6 +320,13 @@ end;
 procedure TfrmTelaHeranca.mskPesquisarChange(Sender: TObject);
 begin
     QryListagem.Locate(IndiceAtual, TMaskEdit(Sender).Text, [loPartialKey, loCaseInsensitive]);
+end;
+
+procedure TfrmTelaHeranca.BloqueiaCTRL_DEL_DBGrid(var Key: Word; Shift: TShiftState);
+begin
+    //Bloqueia  o CTRL + DEL
+    if (Shift = [ssCtrl]) and (Key = 46) then
+      Key := 0;
 end;
 
 end.

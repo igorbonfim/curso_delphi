@@ -66,14 +66,14 @@ begin
       json := RESTRequest.Response.JSONValue.ToString;
 
   jsonObj             := TJSONObject.ParseJSONValue(TEncoding.ASCII.GetBytes(json), 0) as TJSONObject;
-  edtNome.Text        := StringReplace(HTMLDecode(TJSONObject(jsonObj).Get('nome').JsonValue.ToString), '"', '', [rfReplaceAll]);
-  edtCEP.Text         := StringReplace(HTMLDecode(TJSONObject(jsonObj).Get('cep').JsonValue.ToString), '"', '', [rfReplaceAll]);
-  edtCidade.Text      := StringReplace(HTMLDecode(TJSONObject(jsonObj).Get('municipio').JsonValue.ToString), '"', '', [rfReplaceAll]);
-  edtEstado.Text      := StringReplace(HTMLDecode(TJSONObject(jsonObj).Get('uf').JsonValue.ToString), '"', '', [rfReplaceAll]);
-  edtEndereco.Text    := StringReplace(HTMLDecode(TJSONObject(jsonObj).Get('logradouro').JsonValue.ToString), '"', '', [rfReplaceAll]);
-  edtComplemento.Text := StringReplace(HTMLDecode(TJSONObject(jsonObj).Get('complemento').JsonValue.ToString), '"', '', [rfReplaceAll]);
-  edtBairro.Text      := StringReplace(HTMLDecode(TJSONObject(jsonObj).Get('bairro').JsonValue.ToString), '"', '', [rfReplaceAll]);
-  edtNumero.Text      := StringReplace(HTMLDecode(TJSONObject(jsonObj).Get('numero').JsonValue.ToString), '"', '', [rfReplaceAll]);
+  edtNome.Text        := StringReplace(TNetEncoding.HTML.Decode(TJSONObject(jsonObj).Get('nome').JsonValue.ToString), '"', '', [rfReplaceAll]);
+  edtCEP.Text         := StringReplace(TNetEncoding.HTML.Decode(TJSONObject(jsonObj).Get('cep').JsonValue.ToString), '"', '', [rfReplaceAll]);
+  edtCidade.Text      := StringReplace(TNetEncoding.HTML.Decode(TJSONObject(jsonObj).Get('municipio').JsonValue.ToString), '"', '', [rfReplaceAll]);
+  edtEstado.Text      := StringReplace(TNetEncoding.HTML.Decode(TJSONObject(jsonObj).Get('uf').JsonValue.ToString), '"', '', [rfReplaceAll]);
+  edtEndereco.Text    := StringReplace(TNetEncoding.HTML.Decode(TJSONObject(jsonObj).Get('logradouro').JsonValue.ToString), '"', '', [rfReplaceAll]);
+  edtComplemento.Text := StringReplace(TNetEncoding.HTML.Decode(TJSONObject(jsonObj).Get('complemento').JsonValue.ToString), '"', '', [rfReplaceAll]);
+  edtBairro.Text      := StringReplace(TNetEncoding.HTML.Decode(TJSONObject(jsonObj).Get('bairro').JsonValue.ToString), '"', '', [rfReplaceAll]);
+  edtNumero.Text      := StringReplace(TNetEncoding.HTML.Decode(TJSONObject(jsonObj).Get('numero').JsonValue.ToString), '"', '', [rfReplaceAll]);
 end;
 
 end.

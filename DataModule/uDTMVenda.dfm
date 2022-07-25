@@ -65,7 +65,7 @@ object dtmVenda: TdtmVenda
     Top = 16
   end
   object dtsItensVenda: TDataSource
-    DataSet = dtmPrincipal.QryScriptItensVendas
+    DataSet = cdsItensVenda
     Left = 328
     Top = 16
   end
@@ -75,19 +75,24 @@ object dtmVenda: TdtmVenda
     Left = 408
     Top = 16
     object cdsItensVendaprodutoId: TIntegerField
+      DisplayLabel = 'C'#243'digo'
       FieldName = 'produtoId'
     end
     object cdsItensVendaNomeProduto: TStringField
+      DisplayLabel = 'Nome do Produto'
       FieldName = 'NomeProduto'
     end
     object cdsItensVendaquantidade: TFloatField
+      DisplayLabel = 'Quantidade'
       FieldName = 'quantidade'
     end
     object cdsItensVendavalorUnitario: TFloatField
+      DisplayLabel = 'Valor Unit'#225'rio'
       FieldName = 'valorUnitario'
     end
     object cdsItensVendavalorTotal: TFloatField
-      FieldName = 'valorTotal'
+      DisplayLabel = 'Total do Produto'
+      FieldName = 'valorTotalProduto'
     end
     object cdsItensVendavalorTotalVenda: TAggregateField
       FieldName = 'valorTotalVenda'

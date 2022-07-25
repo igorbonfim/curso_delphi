@@ -30,6 +30,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure CLIENTE1Click(Sender: TObject);
     procedure PRODUTO1Click(Sender: TObject);
+    procedure VENDAS1Click(Sender: TObject);
   private
     { Private declarations }
     TeclaEnter : TMREnter;
@@ -45,7 +46,7 @@ implementation
 
 {$R *.dfm}
 
-uses uCadCategoria, uCadCliente, cCadProduto, uCadProduto;
+uses uCadCategoria, uCadCliente, cCadProduto, uCadProduto, uProVenda;
 
 procedure TfrmPrincipal.CATEGORIA1Click(Sender: TObject);
 begin
@@ -104,6 +105,13 @@ begin
   frmCadProduto := TfrmCadProduto.Create(Self);
   frmCadProduto.ShowModal;
   frmCadProduto.Release;
+end;
+
+procedure TfrmPrincipal.VENDAS1Click(Sender: TObject);
+begin
+  frmProVenda := TfrmProVenda.Create(Self);
+  frmProVenda.ShowModal;
+  frmProVenda.Release;
 end;
 
 procedure TfrmPrincipal.AtualizacaoBancoDados(aForm: TfrmAtualizaDB);
